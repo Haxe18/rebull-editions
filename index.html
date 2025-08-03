@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore all Red Bull Energy Drink editions worldwide with country availability and product information.">
+    <meta name="keywords" content="Red Bull, Energy Drink, Editions, Sugarfree, Regular, Country Availability">
+    <meta name="author" content="Red Bull Editions Showcase">
+    <meta property="og:title" content="Red Bull Energy Drink Editions">
+    <meta property="og:description" content="Explore all Red Bull Energy Drink editions worldwide with country availability and product information.">
+    <meta property="og:type" content="website">
+    <meta name="robots" content="index, follow">
+    <title>Red Bull Energy Drink Editions</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Red Bull Editions</h2>
+                <div class="edition-count">
+                    <span id="editionCount">0</span> Editions Available
+                </div>
+                <div class="search-container">
+                    <input type="text" id="editionSearch" placeholder="Search editions..." class="search-input">
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="sugarfree">Sugarfree</button>
+                    <button class="filter-btn" data-filter="regular">Regular</button>
+                </div>
+            </div>
+            <div class="editions-list" id="editionsList">
+                <!-- Editions will be populated here -->
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="content-header">
+                <h1>Country Availability</h1>
+                <p>Click on a country to see all available editions</p>
+            </div>
+            <div class="countries-grid" id="countriesGrid">
+                <!-- Countries will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Country Modal -->
+    <div class="modal" id="countryModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Country Editions</h3>
+                <button class="close-modal" id="closeModal">×</button>
+            </div>
+            <div class="modal-editions-grid" id="modalEditionsGrid">
+                <!-- Country editions will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Page Iframe Modal -->
+    <div class="iframe-modal" id="iframeModal">
+        <div class="iframe-modal-content">
+            <div class="iframe-modal-header">
+                <h3 class="iframe-modal-title" id="iframeTitle">Product</h3>
+                <button class="close-iframe-modal" id="closeIframeModal">×</button>
+            </div>
+            <div class="iframe-container">
+                <iframe id="iframeContent" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

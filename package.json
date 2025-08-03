@@ -1,0 +1,26 @@
+{
+  "name": "redbull-editions-showcase",
+  "version": "1.0.0",
+  "description": "Red Bull Energy Drink Editions Showcase",
+  "main": "index.html",
+  "homepage": "https://haxe18.github.io/rebull-editions",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "serve": "pnpx http-server . -p 3000 -o",
+    "start": "node server.js",
+    "deploy": "echo 'Ready for GitHub Pages deployment'"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+  "keywords": [
+    "redbull",
+    "energy-drink",
+    "showcase",
+    "vanilla-js",
+    "responsive"
+  ],
+  "license": "WTFPL"
+}
