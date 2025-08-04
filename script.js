@@ -3,6 +3,8 @@ let editionsData = {};
 let currentFilter = 'all';
 let currentSearch = '';
 
+
+
 // Load editions data
 async function loadEditionsData() {
     let lastError = null;
@@ -98,7 +100,7 @@ function updateEditionCount() {
     editionCountElement.textContent = uniqueEditions.length;
 }
 
-// Populate editions list in sidebar
+// Populate editions list
 function populateEditionsList() {
     const editionsList = document.getElementById('editionsList');
     if (!editionsList) return;
@@ -145,7 +147,7 @@ function populateEditionsList() {
     });
 }
 
-// Create edition card element with can image and product link
+// Create edition card with tooltip support
 function createEditionCard(edition) {
     const card = document.createElement('div');
     card.className = 'edition-card';
@@ -161,6 +163,9 @@ function createEditionCard(edition) {
     const availableCountries = Object.entries(editionsData)
         .filter(([countryKey, country]) => country.editions.some(e => e.name === edition.name && e.flavor === edition.flavor))
         .map(([countryKey, country]) => country.flag);
+
+    // Create flag elements with tooltips
+    const flagElements = availableCountries.join(' ');
 
     // Find the best product URL (prioritize US, EN, INT)
     const preferredCountries = ['united states', 'united kingdom', 'international'];
@@ -195,13 +200,13 @@ function createEditionCard(edition) {
     card.innerHTML = `
         <div class="edition-header">
             <div class="edition-can">
-                <img src="${getBestImageUrl(edition.name)}" alt="${edition.alt_text || edition.name}" class="edition-can-image">
+                <img src="${getBestImageUrl(edition.name, edition.flavor)}" alt="${edition.alt_text || edition.name}" class="edition-can-image">
             </div>
             <div class="edition-info">
                 <h4>${edition.name}</h4>
                 <p>${edition.flavor}</p>
                 ${edition.flavor_description ? `<p class="flavor-description">${edition.flavor_description}</p>` : ''}
-                <p style="font-size: 12px; color: #999; margin-bottom: 5px;">${availableCountries.join(' ')}</p>
+                <p style="font-size: 12px; color: #999; margin-bottom: 5px;">${flagElements}</p>
             </div>
         </div>
         <div class="edition-tags">
@@ -209,7 +214,56 @@ function createEditionCard(edition) {
         </div>
         ${bestProductUrl ? `<button class="product-link-btn" onclick="openProductPage('${bestProductUrl}', '${edition.name}')">View Product</button>` : ''}
     `;
+
+    // Add tooltip functionality
+    const flagTooltipElements = card.querySelectorAll('.flag-tooltip');
+    flagTooltipElements.forEach(flag => {
+        flag.addEventListener('mouseenter', showTooltip);
+        flag.addEventListener('mouseleave', hideTooltip);
+    });
+
     return card;
+}
+
+// Show tooltip with country name
+function showTooltip(event) {
+    const countryName = event.target.getAttribute('data-country');
+    if (!countryName) return;
+
+    // Remove existing tooltip
+    const existingTooltip = document.querySelector('.country-tooltip');
+    if (existingTooltip) {
+        existingTooltip.remove();
+    }
+
+    // Create tooltip
+    const tooltip = document.createElement('div');
+    tooltip.className = 'country-tooltip';
+    tooltip.textContent = countryName;
+    document.body.appendChild(tooltip);
+
+    // Position tooltip
+    const rect = event.target.getBoundingClientRect();
+    tooltip.style.left = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2) + 'px';
+    tooltip.style.top = rect.top - tooltip.offsetHeight - 8 + 'px';
+
+    // Show tooltip
+    setTimeout(() => {
+        tooltip.style.opacity = '1';
+        tooltip.style.transform = 'translateY(-5px)';
+    }, 10);
+}
+
+// Hide tooltip
+function hideTooltip() {
+    const tooltip = document.querySelector('.country-tooltip');
+    if (tooltip) {
+        tooltip.style.opacity = '0';
+        tooltip.style.transform = 'translateY(0)';
+        setTimeout(() => {
+            tooltip.remove();
+        }, 200);
+    }
 }
 
 // Populate countries grid
@@ -243,7 +297,7 @@ function createCountryCard(countryKey, country) {
         return `<span class="edition-mini" style="background: ${editionData.color}">${edition}</span>`;
     }).join('');
 
-    const countryName = countryKey.charAt(0).toUpperCase() + countryKey.slice(1);
+    const countryName = countryKey.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
 
     card.innerHTML = `
         <div class="country-header">
@@ -281,7 +335,7 @@ function showCountryEditions(countryKey, country) {
         `<img src="${country.flag_url}" alt="${countryKey} flag" class="modal-flag-img">` :
         country.flag;
 
-    const countryName = countryKey.charAt(0).toUpperCase() + countryKey.slice(1);
+    const countryName = countryKey.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     modalTitle.innerHTML = `${flagDisplay} ${countryName} - All Editions`;
     modalEditionsGrid.innerHTML = '';
 
@@ -410,14 +464,14 @@ function getCanImage(edition) {
 }
 
 // Get best image URL for an edition (prioritize US, EN, INT)
-function getBestImageUrl(editionName) {
+function getBestImageUrl(editionName, editionFlavor) {
     const preferredCountries = ['united states', 'united kingdom', 'international'];
 
     // First try to find image from preferred countries
     for (const preferredCountry of preferredCountries) {
         if (editionsData[preferredCountry]) {
             const preferredEdition = editionsData[preferredCountry].editions.find(e =>
-                e.name === editionName
+                e.name === editionName && e.flavor === editionFlavor
             );
             if (preferredEdition && preferredEdition.image_url) {
                 return preferredEdition.image_url;
@@ -428,7 +482,7 @@ function getBestImageUrl(editionName) {
     // If no preferred country has this edition, use the first available image
     for (const [countryKey, country] of Object.entries(editionsData)) {
         const foundEdition = country.editions.find(e =>
-            e.name === editionName
+            e.name === editionName && e.flavor === editionFlavor
         );
         if (foundEdition && foundEdition.image_url) {
             return foundEdition.image_url;

@@ -1,3 +1,38 @@
+/* CSS Variables for theming */
+:root {
+    /* Light mode colors */
+    --bg-primary: #f8f9fa;
+    --bg-secondary: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-muted: #999999;
+    --border-color: #f0f0f0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --accent-color: #FF69B4;
+    --accent-hover: #e55a9e;
+    --sugarfree-color: #0595D2;
+    --regular-color: #FF9800;
+    --all-color: #666666;
+}
+
+/* Dark mode colors */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #1a1a1a;
+        --bg-secondary: #2d2d2d;
+        --text-primary: #ffffff;
+        --text-secondary: #cccccc;
+        --text-muted: #888888;
+        --border-color: #404040;
+        --shadow-color: rgba(0, 0, 0, 0.3);
+        --accent-color: #FF69B4;
+        --accent-hover: #e55a9e;
+        --sugarfree-color: #0595D2;
+        --regular-color: #FF9800;
+        --all-color: #666666;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,8 +41,8 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background: #f8f9fa;
-    color: #333;
+    background: var(--bg-primary);
+    color: var(--text-primary);
     line-height: 1.6;
 }
 
@@ -19,11 +54,11 @@ body {
 
 /* Sidebar */
 .sidebar {
-    background: white;
+    background: var(--bg-secondary);
     border-radius: 15px;
     padding: 30px;
     margin-bottom: 40px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px var(--shadow-color);
 }
 
 .sidebar-header {
@@ -36,26 +71,26 @@ body {
 .sidebar-header h3 {
     font-size: 24px;
     font-weight: 700;
-    color: #333;
+    color: var(--text-primary);
 }
 
 .sidebar-header h2 {
     font-size: 24px;
     font-weight: 700;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 10px;
 }
 
 .edition-count {
     font-size: 14px;
-    color: #666;
+    color: var(--text-secondary);
     margin-bottom: 15px;
     font-weight: 500;
 }
 
 .edition-count span {
     font-weight: 700;
-    color: #FF69B4;
+    color: var(--accent-color);
 }
 
 .search-container {
@@ -65,22 +100,23 @@ body {
 .search-input {
     width: 100%;
     padding: 10px 15px;
-    border: 2px solid #f0f0f0;
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     font-size: 14px;
     font-family: 'Inter', sans-serif;
     transition: all 0.3s ease;
-    background: white;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
 }
 
 .search-input:focus {
     outline: none;
-    border-color: #FF69B4;
+    border-color: var(--accent-color);
     box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.1);
 }
 
 .search-input::placeholder {
-    color: #999;
+    color: var(--text-muted);
 }
 
 .filter-controls {
@@ -90,35 +126,36 @@ body {
 
 .filter-btn {
     padding: 8px 16px;
-    border: 2px solid #e0e0e0;
-    background: white;
+    border: 2px solid var(--border-color);
+    background: var(--bg-secondary);
     border-radius: 20px;
     font-size: 12px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    color: var(--text-primary);
 }
 
 /* Filter button specific colors */
 .filter-btn[data-filter="all"].active,
 .filter-btn[data-filter="all"]:hover {
-    background: #666;
+    background: var(--all-color);
     color: white;
-    border-color: #666;
+    border-color: var(--all-color);
 }
 
 .filter-btn[data-filter="sugarfree"].active,
 .filter-btn[data-filter="sugarfree"]:hover {
-    background: #0595D2;
+    background: var(--sugarfree-color);
     color: white;
-    border-color: #0595D2;
+    border-color: var(--sugarfree-color);
 }
 
 .filter-btn[data-filter="regular"].active,
 .filter-btn[data-filter="regular"]:hover {
-    background: #FF9800;
+    background: var(--regular-color);
     color: white;
-    border-color: #FF9800;
+    border-color: var(--regular-color);
 }
 
 .editions-list {
@@ -129,10 +166,10 @@ body {
 
 /* Make edition cards consistent height */
 .edition-card {
-    background: white;
+    background: var(--bg-secondary);
     border-radius: 12px;
     padding: 25px;
-    border: 2px solid #f0f0f0;
+    border: 2px solid var(--border-color);
     transition: all 0.3s ease;
     text-align: center;
     display: flex;
@@ -141,7 +178,7 @@ body {
 }
 
 .edition-card:hover {
-    border-color: #FF69B4;
+    border-color: var(--accent-color);
     transform: translateY(-5px);
     box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
 }
@@ -178,24 +215,24 @@ body {
 .edition-info {
     flex: 1;
     display: grid;
-    grid-template-rows: auto auto 60px 50px auto auto;
+    grid-template-rows: auto auto auto auto auto auto;
     gap: 5px;
 }
 
 .edition-info h4 {
     font-size: 16px;
     font-weight: 700;
-    color: #333;
+    color: var(--text-primary);
 }
 
 .edition-info p {
     font-size: 14px;
-    color: #666;
+    color: var(--text-secondary);
 }
 
 .edition-info p:last-of-type {
     font-size: 14px;
-    color: #999;
+    color: var(--text-muted);
     height: 70px;
     overflow: hidden;
     display: -webkit-box;
@@ -203,17 +240,35 @@ body {
     -webkit-box-orient: vertical;
 }
 
+/* Fix flag display in edition cards - prevent truncation */
+.edition-info p[style*="font-size: 12px"] {
+    font-size: 12px !important;
+    color: var(--text-muted) !important;
+    margin-bottom: 5px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+    line-height: 1.3;
+    max-height: none;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: unset;
+    display: block;
+}
+
 .flavor-description {
     font-size: 12px;
-    color: #888;
+    color: var(--text-muted);
     font-style: italic;
     line-height: 1.4;
-    height: 60px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: auto;
+    min-height: 60px;
+    overflow: visible;
+    display: block;
     text-align: center;
+    margin: 5px 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
 /* Edition Tags - make them consistent */
@@ -228,12 +283,12 @@ body {
 }
 
 .tag-sugarfree {
-    background: #0595D2;
+    background: var(--sugarfree-color);
     color: white;
 }
 
 .tag-regular {
-    background: #FF9800;
+    background: var(--regular-color);
     color: white;
 }
 
@@ -244,7 +299,7 @@ body {
 
 /* Product Link Button */
 .product-link-btn {
-    background: #FF69B4;
+    background: var(--accent-color);
     color: white;
     border: none;
     padding: 10px 20px;
@@ -258,23 +313,23 @@ body {
 }
 
 .product-link-btn:hover {
-    background: #e55a9e;
+    background: var(--accent-hover);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(255, 105, 180, 0.3);
 }
 
 /* Country Availability */
 .country-availability {
-    background: white;
+    background: var(--bg-secondary);
     border-radius: 15px;
     padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px var(--shadow-color);
 }
 
 .country-availability h3 {
     font-size: 24px;
     font-weight: 700;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 30px;
 }
 
@@ -285,16 +340,16 @@ body {
 }
 
 .country-card {
-    background: white;
+    background: var(--bg-secondary);
     border-radius: 12px;
     padding: 20px;
-    border: 2px solid #f0f0f0;
+    border: 2px solid var(--border-color);
     transition: all 0.3s ease;
     cursor: pointer;
 }
 
 .country-card:hover {
-    border-color: #FF69B4;
+    border-color: var(--accent-color);
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
 }
@@ -321,15 +376,24 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+/* Ensure flag tooltips display inline */
+.flag-tooltip {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    display: inline-block;
+    margin: 0 1px;
+    vertical-align: middle;
+}
+
 .country-name {
     font-size: 16px;
     font-weight: 600;
-    color: #333;
+    color: var(--text-primary);
 }
 
 .country-editions {
     font-size: 12px;
-    color: #666;
+    color: var(--text-secondary);
     margin-bottom: 10px;
 }
 
@@ -349,9 +413,9 @@ body {
 
 /* Special styling for White Edition to improve readability */
 .edition-mini[style*="background: #FFFFFF"] {
-    background: #f0f0f0 !important;
-    color: #333 !important;
-    border: 1px solid #ddd;
+    background: var(--border-color) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color);
 }
 
 /* Country Editions Modal */
@@ -370,7 +434,7 @@ body {
 }
 
 .modal-content {
-    background: white;
+    background: var(--bg-secondary);
     border-radius: 15px;
     padding: 30px;
     max-width: 90%;
@@ -392,14 +456,14 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    border-bottom: 2px solid #f0f0f0;
+    border-bottom: 2px solid var(--border-color);
     padding-bottom: 15px;
 }
 
 .modal-title {
     font-size: 24px;
     font-weight: 700;
-    color: #333;
+    color: var(--text-primary);
     margin: 0;
 }
 
@@ -407,7 +471,7 @@ body {
     background: none;
     border: none;
     font-size: 30px;
-    color: #999;
+    color: var(--text-muted);
     cursor: pointer;
     padding: 0;
     width: 40px;
@@ -420,8 +484,8 @@ body {
 }
 
 .close-modal:hover {
-    background: #f0f0f0;
-    color: #333;
+    background: var(--border-color);
+    color: var(--text-primary);
 }
 
 .modal-editions-grid {
@@ -432,10 +496,10 @@ body {
 }
 
 .modal-edition-card {
-    background: white;
+    background: var(--bg-secondary);
     border-radius: 12px;
     padding: 20px;
-    border: 2px solid #f0f0f0;
+    border: 2px solid var(--border-color);
     transition: all 0.3s ease;
     text-align: center;
     display: flex;
@@ -445,7 +509,7 @@ body {
 }
 
 .modal-edition-card:hover {
-    border-color: #FF69B4;
+    border-color: var(--accent-color);
     transform: translateY(-3px);
     box-shadow: 0 10px 30px rgba(255, 105, 180, 0.2);
 }
@@ -475,7 +539,7 @@ body {
 .modal-edition-info {
     flex: 1;
     display: grid;
-    grid-template-rows: auto auto 55px 60px auto auto;
+    grid-template-rows: auto auto auto auto auto auto;
     width: 100%;
     gap: 5px;
 }
@@ -483,19 +547,19 @@ body {
 .modal-edition-info h4 {
     font-size: 14px;
     font-weight: 700;
-    color: #333;
+    color: var(--text-primary);
     margin-bottom: 5px;
 }
 
 .modal-edition-info p {
     font-size: 12px;
-    color: #666;
+    color: var(--text-secondary);
     margin-bottom: 10px;
 }
 
 .modal-edition-info p:last-of-type {
     font-size: 13px;
-    color: #999;
+    color: var(--text-muted);
     height: 60px;
     overflow: hidden;
     display: -webkit-box;
@@ -505,17 +569,18 @@ body {
 
 .modal-edition-info p.flavor-description {
     font-size: 12px !important;
-    color: #888 !important;
+    color: var(--text-muted) !important;
     font-style: italic;
     line-height: 1.4;
-    height: 55px !important;
-    overflow: hidden;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
+    height: auto !important;
+    min-height: 55px;
+    overflow: visible;
+    display: block !important;
     text-align: center;
-    -webkit-line-clamp: unset !important;
-    -webkit-box-orient: unset !important;
+    margin: 5px 0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
 }
 
 .modal-edition-info .edition-tags {
@@ -540,7 +605,7 @@ body {
 }
 
 .iframe-modal-content {
-    background: white;
+    background: var(--bg-secondary);
     border-radius: 20px;
     width: 90%;
     height: 90%;
@@ -555,14 +620,14 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px 30px;
-    border-bottom: 1px solid #f0f0f0;
-    background: white;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-secondary);
 }
 
 .iframe-modal-title {
     font-size: 20px;
     font-weight: 700;
-    color: #333;
+    color: var(--text-primary);
 }
 
 .close-iframe-modal {
@@ -570,13 +635,13 @@ body {
     border: none;
     font-size: 24px;
     cursor: pointer;
-    color: #666;
+    color: var(--text-secondary);
     transition: color 0.3s ease;
     padding: 5px;
 }
 
 .close-iframe-modal:hover {
-    color: #FF69B4;
+    color: var(--accent-color);
 }
 
 .iframe-container {
@@ -588,7 +653,7 @@ body {
     width: 100%;
     height: 100%;
     border: none;
-    background: white;
+    background: var(--bg-secondary);
 }
 
 /* Responsive Design */
@@ -610,6 +675,56 @@ body {
     
     .countries-grid {
         grid-template-columns: 1fr;
+    }
+    
+    /* Fix mobile country card layout */
+    .country-card {
+        padding: 15px;
+        min-height: auto;
+    }
+    
+    .country-header {
+        margin-bottom: 10px;
+    }
+    
+    .country-name {
+        font-size: 14px;
+    }
+    
+    .country-editions {
+        font-size: 11px;
+        margin-bottom: 8px;
+    }
+    
+    .country-editions-list {
+        gap: 3px;
+    }
+    
+    .edition-mini {
+        padding: 1px 4px;
+        font-size: 9px;
+    }
+    
+    /* Fix description text overflow on mobile */
+    .edition-info p:last-of-type {
+        height: auto;
+        min-height: 60px;
+        -webkit-line-clamp: 3;
+    }
+    
+    .flavor-description {
+        height: auto;
+        min-height: 50px;
+        font-size: 11px;
+        line-height: 1.3;
+        margin-bottom: 10px;
+    }
+    
+    /* Fix flag display on mobile */
+    .edition-info p[style*="font-size: 12px"] {
+        font-size: 11px !important;
+        line-height: 1.2;
+        margin-bottom: 8px;
     }
     
     .modal-content {
@@ -688,23 +803,61 @@ body {
     pointer-events: none;
 }
 
+.flag-tooltip:hover {
+    transform: scale(1.2);
+}
+
+.flag-tooltip .country-flag,
+.flag-tooltip .country-flag-img,
+.flag-tooltip .country-flag-fallback {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.country-tooltip {
+    position: fixed;
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid var(--border-color);
+    z-index: 10000;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(0);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+/* Dark mode tooltip */
+@media (prefers-color-scheme: dark) {
+    .country-tooltip {
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        border-color: var(--border-color);
+    }
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar {
     width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: var(--border-color);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #FF69B4;
+    background: var(--accent-color);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #FF1493;
+    background: var(--accent-hover);
 } 
 
 .modal-flag-img {

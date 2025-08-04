@@ -8,6 +8,8 @@ A comprehensive web application showcasing all Red Bull Energy Drink editions av
 - **Country Availability**: Interactive country cards showing available editions per country
 - **Product Information**: Detailed product pages with descriptions and direct links
 - **Smart Image Prioritization**: Automatically selects high-quality images from preferred countries (US, UK, International)
+- **Dark Mode Support**: Automatic dark mode based on OS preference with smooth transitions
+- **Interactive Tooltips**: Hover over flags to see country names
 - **Responsive Design**: Works seamlessly on desktop and mobile devices
 - **Modal Integration**: Country-specific edition modals with 2-column layout
 - **Iframe Product Pages**: View product pages without leaving the application
@@ -24,7 +26,7 @@ Deploy to GitHub Pages by enabling Pages in your repository settings and selecti
 redbull-editions-showcase/
 ├── index.html          # Main HTML file
 ├── script.js           # JavaScript functionality (multi-source data loading)
-├── styles.css          # CSS styling
+├── styles.css          # CSS styling with dark mode support
 ├── data/
 │   └── redbull_editions.json  # Json with data to serve
 ├── .github/workflows/
@@ -37,7 +39,7 @@ redbull-editions-showcase/
 ## 🛠️ Technologies Used
 
 - **HTML5**: Semantic markup
-- **CSS3**: Modern styling with Flexbox and Grid
+- **CSS3**: Modern styling with Flexbox, Grid, and CSS Variables
 - **JavaScript (ES6+)**: Vanilla JS with async/await
 - **JSON**: Data storage and management
 
@@ -51,20 +53,33 @@ The application uses a comprehensive JSON structure with:
 
 ## 🎨 Key Features
 
+### Dark Mode Support
+- **Automatic Detection**: Respects OS dark mode preference
+- **Smooth Transitions**: Animated color changes
+- **Consistent Branding**: Maintains Red Bull pink accent color
+- **Accessibility**: High contrast ratios in both themes
+
+### Interactive Tooltips
+- **Flag Hover**: Hover over flags to see country names
+- **Smooth Animation**: Elegant show/hide transitions
+- **Responsive**: Works on all device sizes
+- **Theme Aware**: Adapts to light/dark mode
+
 ### Smart Image Selection
-- Prioritizes US, UK, and International images
-- Falls back to first available image if preferred not found
-- Ensures consistent high-quality visuals
+- **Flavor-Aware**: Considers both edition name and flavor for correct image mapping
+- **Prioritizes US, UK, and International images**
+- **Falls back to first available image if preferred not found**
+- **Ensures consistent high-quality visuals**
 
 ### Interactive Country Cards
-- Click to view all editions available in a country
-- Shows edition count and preview tags
-- Responsive grid layout
+- **Click to view all editions available in a country**
+- **Shows edition count and preview tags**
+- **Responsive grid layout**
 
 ### Product Integration
-- Direct links to official Red Bull product pages
-- Iframe modal integration for seamless browsing
-- Product descriptions and specifications
+- **Direct links to official Red Bull product pages**
+- **Iframe modal integration for seamless browsing**
+- **Product descriptions and specifications**
 
 ## 🔧 Setup Instructions
 
@@ -90,6 +105,26 @@ The application uses a comprehensive JSON structure with:
 - Safari (latest)
 - Edge (latest)
 
+## 🌙 Dark Mode
+
+The application automatically detects your system's dark mode preference:
+- **Light Mode**: Clean, bright interface
+- **Dark Mode**: Easy on the eyes with dark backgrounds
+- **Smooth Transitions**: Seamless switching between themes
+- **Accessibility**: Maintains readability in both modes
+
+## 🎯 Interactive Features
+
+### Flag Tooltips
+- **Hover over any flag** to see the country name
+- **Smooth animations** with scale effects
+- **Responsive design** that works on all devices
+
+### Smart Filtering
+- **Filter by type**: All, Sugarfree, Regular
+- **Live search**: Find editions by name or flavor
+- **Real-time updates**: Count updates as you filter
+
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -109,6 +144,8 @@ This project is licensed under the **WTFPL** (Do What The F*ck You Want To Publi
 This project was developed with **Claude Sonnet 4** (Anthropic AI) in collaboration with the project owner. The entire codebase, including:
 
 - 🎨 **Responsive UI/UX Design** - Modern, mobile-first interface
+- 🌙 **Dark Mode Implementation** - OS-aware theming system
+- 🎯 **Interactive Tooltips** - Enhanced user experience
 - ⚡ **Performance Optimizations** - Smart data loading with fallbacks
 - 🔄 **Multi-Repository Architecture** - Automated sync workflows
 - 🛠️ **Production-Ready Code** - Error handling, SEO, deployment

@@ -9,7 +9,6 @@
   },
   "scripts": {
     "serve": "pnpx http-server . -p 3000 -o",
-    "start": "node server.js",
     "deploy": "echo 'Ready for GitHub Pages deployment'"
   },
   "devDependencies": {
