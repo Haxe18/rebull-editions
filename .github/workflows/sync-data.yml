@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
   pull-requests: write
 
 jobs:
@@ -65,7 +66,6 @@ jobs:
         add-paths: |
           data/*
         branch: automated-update
-        branch-suffix: timestamp
         delete-branch: true
         author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
         commit-message: "🔄 Update Red Bull Editions Data (${{ steps.get_date.outputs.TODAY_DATE }})"
