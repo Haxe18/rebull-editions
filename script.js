@@ -465,12 +465,14 @@ function getCanImage(edition) {
 
 // Get best image URL for an edition (prioritize US, EN, INT)
 function getBestImageUrl(editionName, editionFlavor) {
-    const preferredCountries = ['united states', 'united kingdom', 'international'];
+const preferredCountries = ['united states', 'united kingdom', 'international'];
 
     // First try to find image from preferred countries
     for (const preferredCountry of preferredCountries) {
-        if (editionsData[preferredCountry]) {
-            const preferredEdition = editionsData[preferredCountry].editions.find(e =>
+        const matchingKey = Object.keys(editionsData).find(key => key.toLowerCase() === preferredCountry);
+
+        if (matchingKey) {
+            const preferredEdition = editionsData[matchingKey].editions.find(e =>
                 e.name === editionName && e.flavor === editionFlavor
             );
             if (preferredEdition && preferredEdition.image_url) {
