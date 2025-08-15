@@ -1,0 +1,21 @@
+{
+    "name": "Red Bull Editions",
+    "short_name": "RB Editions",
+    "description": "Explore all Red Bull Energy Drink editions worldwide",
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#DB0A40",
+    "background_color": "#ffffff",
+    "icons": [
+        {
+            "src": "favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        },
+        {
+            "src": "favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        }
+    ]
+}

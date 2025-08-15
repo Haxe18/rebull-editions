@@ -1,0 +1,10 @@
+<!-- PNG generation requires image processing tools. Using SVG as fallback -->
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <circle cx="16" cy="16" r="15" fill="#DB0A40"/>
+  <g fill="#FFFFFF">
+    <path d="M 8 12 Q 6 8, 10 7 Q 12 8, 11 11 L 10 14 Z"/>
+    <path d="M 24 12 Q 26 8, 22 7 Q 20 8, 21 11 L 22 14 Z"/>
+    <path d="M 16 10 L 19 16 L 17 16 L 18 22 L 13 16 L 15 16 L 14 10 Z" fill="#FFD700"/>
+  </g>
+  <text x="16" y="27" font-family="Arial, sans-serif" font-size="6" font-weight="bold" fill="#FFFFFF" text-anchor="middle">RB</text>
+</svg>
