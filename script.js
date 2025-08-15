@@ -167,8 +167,8 @@ function createEditionCard(edition) {
     // Create flag elements with tooltips
     const flagElements = availableCountries.join(' ');
 
-    // Find the best product URL (prioritize US, EN, INT)
-    const preferredCountries = ['united states', 'united kingdom', 'international'];
+    // Find the best product URL (prioritize native English-speaking countries)
+    const preferredCountries = ['united states', 'united kingdom', 'australia', 'canada', 'international'];
     let bestProductUrl = null;
 
     // First try to find URL from preferred countries
@@ -463,9 +463,9 @@ function getCanImage(edition) {
     return 'https://www.redbull.com/energydrink/v1/resources/storyblok/images/f/287059/870x2200/9153a98907/de_ed_250ml_energy-drink_country_rgb_initi5-311_cold_closed_front_com_25.png/m/310x0';
 }
 
-// Get best image URL for an edition (prioritize US, EN, INT)
+// Get best image URL for an edition (prioritize native English-speaking countries)
 function getBestImageUrl(editionName, editionFlavor) {
-const preferredCountries = ['united states', 'united kingdom', 'international'];
+const preferredCountries = ['united states', 'united kingdom', 'australia', 'canada', 'international'];
 
     // First try to find image from preferred countries
     for (const preferredCountry of preferredCountries) {
