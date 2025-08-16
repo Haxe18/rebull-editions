@@ -23,21 +23,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Skip to main content link for keyboard navigation -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <div class="container">
         <!-- Sidebar -->
-        <aside class="sidebar">
+        <aside class="sidebar" role="complementary" aria-label="Edition filters and search">
             <div class="sidebar-header">
                 <h2>Red Bull Editions</h2>
                 <div class="edition-count">
                     <span id="editionCount">0</span> Editions Available
                 </div>
-                <div class="search-container">
-                    <input type="text" id="editionSearch" placeholder="Search editions..." class="search-input">
+                <div class="search-container" role="search">
+                    <label for="editionSearch" class="visually-hidden">Search editions</label>
+                    <input type="text" id="editionSearch" placeholder="Search editions..." class="search-input" aria-label="Search editions">
                 </div>
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">All</button>
-                    <button class="filter-btn" data-filter="sugarfree">Sugarfree</button>
-                    <button class="filter-btn" data-filter="regular">Regular</button>
+                <div class="filter-buttons" role="group" aria-label="Filter editions by type">
+                    <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+                    <button class="filter-btn" data-filter="sugarfree" aria-pressed="false">Sugarfree</button>
+                    <button class="filter-btn" data-filter="regular" aria-pressed="false">Regular</button>
                 </div>
             </div>
             <div class="editions-list" id="editionsList">
@@ -46,7 +49,7 @@
         </aside>
 
         <!-- Main Content -->
-        <div class="main-content">
+        <main class="main-content" id="main-content" role="main">
             <div class="content-header">
                 <h1>Country Availability</h1>
                 <p>Click on a country to see all available editions</p>
@@ -54,15 +57,15 @@
             <div class="countries-grid" id="countriesGrid">
                 <!-- Countries will be populated here -->
             </div>
-        </div>
+        </main>
     </div>
 
     <!-- Country Modal -->
-    <div class="modal" id="countryModal">
+    <div class="modal" id="countryModal" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title" id="modalTitle">Country Editions</h3>
-                <button class="close-modal" id="closeModal">×</button>
+                <button class="close-modal" id="closeModal" aria-label="Close modal">×</button>
             </div>
             <div class="modal-editions-grid" id="modalEditionsGrid">
                 <!-- Country editions will be populated here -->
@@ -71,11 +74,11 @@
     </div>
 
     <!-- Product Page Iframe Modal -->
-    <div class="iframe-modal" id="iframeModal">
+    <div class="iframe-modal" id="iframeModal" role="dialog" aria-labelledby="iframeTitle" aria-hidden="true">
         <div class="iframe-modal-content">
             <div class="iframe-modal-header">
                 <h3 class="iframe-modal-title" id="iframeTitle">Product</h3>
-                <button class="close-iframe-modal" id="closeIframeModal">×</button>
+                <button class="close-iframe-modal" id="closeIframeModal" aria-label="Close product modal">×</button>
             </div>
             <div class="iframe-container">
                 <iframe id="iframeContent" frameborder="0" allowfullscreen></iframe>

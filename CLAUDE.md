@@ -24,12 +24,12 @@ This is a static showcase website for Red Bull editions across 64 countries. It 
 ## Development Commands
 
 ```bash
-# Install development server
-npm install
+# Install dependencies (if needed)
+pnpm install
 
 # Run local development server
-npm start
-# Opens at http://localhost:8080
+pnpm serve
+# Opens at http://localhost:3000
 
 # Deploy to GitHub Pages (automatic on push to main)
 git push origin main

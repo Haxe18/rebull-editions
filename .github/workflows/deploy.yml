@@ -26,6 +26,10 @@ jobs:
         cp index.html deploy_page/
         cp script.js deploy_page/
         cp styles.css deploy_page/
+        cp favicon.svg deploy_page/
+        cp favicon.ico deploy_page/
+        cp favicon-32x32.png deploy_page/
+        cp site.webmanifest deploy_page/
         cp -r data/ deploy_page/
 
     - name: Upload artifact
